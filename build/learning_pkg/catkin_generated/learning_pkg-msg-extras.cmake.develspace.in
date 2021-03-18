@@ -1,2 +1,0 @@
-set(learning_pkg_MESSAGE_FILES "/home/zsx/learning_ws/src/learning_pkg/msg/Person.msg;/home/zsx/learning_ws/src/learning_pkg/msg/Hello.msg")
-set(learning_pkg_SERVICE_FILES "")
