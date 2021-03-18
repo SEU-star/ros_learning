@@ -1,0 +1,8 @@
+prefix=/home/zsx/learning_ws/install
+
+Name: ros_cloud
+Description: Description of ros_cloud
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
