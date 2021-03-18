@@ -32,3 +32,6 @@ target_link_libraries(turtle_tf_broadcaster ${catkin_LIBRARIES})
 
 add_executable(turtle_tf_listener src/turtle_tf_listener.cpp)
 target_link_libraries(turtle_tf_listener ${catkin_LIBRARIES})
+
+add_executable(add_frame_tf src/add_frame_tf.cpp)
+target_link_libraries(add_frame_tf ${catkin_LIBRARIES})

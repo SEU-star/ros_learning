@@ -20,9 +20,16 @@ int main(int argc, char** argv){
   while (node.ok()){
     tf::StampedTransform transform;
     try{
-      listener.lookupTransform("/turtle2", "/turtle1",
-                               ros::Time(0), transform);	//从turtle2坐标系开始转换到turtle1坐标系;变换的时间，提供ros::Time(0)即会给出最近的可用的变换;结果存放的变换对象
-    }
+    	 ros::Time now = ros::Time::now();
+    	listener.waitForTransform("/turtle2", "/turtle1",
+                               now, ros::Duration(5.0));  		//每个监听器有一个缓冲区，它存储来自不同tf广播者的所有坐标变换。 当广播者发出变换时，变换进入缓冲区之前需要一些时间（通常是几个毫秒）。 因此，当您在时间“now”请求坐标系变换时，您应该等待几毫秒以获得该信息
+        listener.lookupTransform("/turtle2", "/turtle1",
+                               now, transform);	//从turtle2坐标系开始转换到turtle1坐标系;变换的时间，提供ros::Time(0)即会给出最近的可用的变换;结果存放的变换对象
+//      listener.lookupTransform("/turtle2", "/carrot1",
+//                               ros::Time(0), transform);
+		}
+    
+    
     catch (tf::TransformException &ex) {
       ROS_ERROR("%s",ex.what());
       ros::Duration(1.0).sleep();
