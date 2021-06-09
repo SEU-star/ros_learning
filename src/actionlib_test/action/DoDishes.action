@@ -1,0 +1,8 @@
+#Define the goal
+uint32 dishwasher_id #指定哪个洗碗机来洗
+---
+#Define the result
+uint32 total_disher_cleaned #总共洗碗的数目
+---
+#Define the feedback message
+float32 percent_complete #完成程度
