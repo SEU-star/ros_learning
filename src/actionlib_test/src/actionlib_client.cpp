@@ -29,11 +29,11 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "do_dishes_client");
     
     // 定义一个客户端
-    DoDishesClient client("/do_dishes", true);
+    DoDishesClient* client = new DoDishesClient("/do_dishes", true);
     
     // 等待服务器端
     ROS_INFO("Waiting for action server to start.");
-    client.waitForServer();
+    client->waitForServer();
     
     ROS_INFO("Action server started, sending goal.");
     // 创建一个action的goal
@@ -41,10 +41,10 @@ int main(int argc, char** argv)
     goal.dishwasher_id = 1;
  
     // 发送action的goal给服务器端，并且设置回调函数
-    client.sendGoal(goal, &doneCb, &activeCb, &feedbackCb);
-    client.waitForResult();//返回action最后的结果
-    std::cout << "State: " << client.getState().toString() << std::endl;
-    ros::spin();
+    client->sendGoal(goal, &doneCb, &activeCb, &feedbackCb);
+    client->waitForResult();//返回action最后的结果
+    std::cout << "State: " << client->getState().toString() << std::endl;
+//    ros::spin();
     
     return 0;
 }
